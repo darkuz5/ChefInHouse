@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
 
-        setContentView(R.layout.main_activity);
          info = (TextView)findViewById(R.id.info);
-       loginButton = (LoginButton)findViewById(R.id.login_button);
+         loginButton = (LoginButton)findViewById(R.id.login_button);
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -66,11 +66,10 @@ public class MainActivity extends AppCompatActivity {
             public void onError(FacebookException e) {
                 info.setText("Login attempt failed.");
             }
+
+            protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+                callbackManager.onActivityResult(requestCode, resultCode, data);
+            }
         });
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }
