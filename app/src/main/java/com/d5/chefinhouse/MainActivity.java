@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private CallbackManager callbackManager;
     private AccessTokenTracker accessTokenTracker;
     private ProfileTracker profileTracker;
+    private TextView info;
+    private LoginButton loginButton;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         setContentView(R.layout.main_activity);
-        info = (TextView)findViewById(R.id.info);
-        loginButton = (LoginButton)findViewById(R.id.login_button);
+         info = (TextView)findViewById(R.id.info);
+       loginButton = (LoginButton)findViewById(R.id.login_button);
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -61,10 +66,11 @@ public class MainActivity extends AppCompatActivity {
             public void onError(FacebookException e) {
                 info.setText("Login attempt failed.");
             }
-            @Override
-            protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-                callbackManager.onActivityResult(requestCode, resultCode, data);
-            }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }
