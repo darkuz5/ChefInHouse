@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
             public void onError(FacebookException e) {
                 info.setText("Login attempt failed." + e.toString());
             }
-
-
         });
     }
 
