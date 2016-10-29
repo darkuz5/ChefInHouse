@@ -17,10 +17,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    repositories {
-        mavenCentral()
-    }
 }
 
 dependencies {
@@ -30,5 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.facebook.android:facebook-android-sdk:4.6.0'
+
     testCompile 'junit:junit:4.12'
 }
