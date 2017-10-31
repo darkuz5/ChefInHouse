@@ -2,18 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_add_recipe"
         android:orderInCategory="100"
         android:title="@string/add_recipe"
         android:visible="true" />
     <item
-        android:id="@+id/action_rated"
+        android:id="@+id/my_recipes"
         android:orderInCategory="100"
         android:title="@string/my_recipes"
         android:visible="true" />
-    <item
-        android:id="@+id/action_favorites"
-        android:orderInCategory="100"
-        android:title="Favorites"
-        android:visible="true" />
+
 </menu>
